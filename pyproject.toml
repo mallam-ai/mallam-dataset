@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "mallam-datasets"
+version = "0.1.0"
+description = "dataset manipulation tool for mallam"
+authors = ["GUO YANKE <hi@guoyk.xyz>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+transformers = "^4.34.1"
+datasets = "^2.14.6"
+sentence-transformers = "^2.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
