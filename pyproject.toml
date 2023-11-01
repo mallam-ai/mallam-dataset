@@ -6,11 +6,18 @@ authors = ["GUO YANKE <hi@guoyk.xyz>"]
 license = "MIT"
 readme = "README.md"
 
+packages = [
+    { include = "mallam_datasets" },
+]
+
 [tool.poetry.dependencies]
 python = "^3.10"
 transformers = "^4.34.1"
 datasets = "^2.14.6"
 sentence-transformers = "^2.2.2"
+stanza = "^1.6.1"
+click = "^8.1.7"
+requests = "^2.31.0"
 
 
 [build-system]
