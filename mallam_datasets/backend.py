@@ -13,13 +13,15 @@ class BackendService:
         if not secret_key:
             secret_key = os.getenv("SECRET_KEY")
 
-        self.url = url.rstrip('/')
+        self.url = url.rstrip("/")
         self.secret_key = secret_key
 
     def invoke(self, action: str, **kwargs) -> Dict:
         res = requests.post(
-            f'{self.url}/invoke/{action}',
-            params={'secret_key': self.secret_key},
-            json=kwargs
+            f"{self.url}/invoke/{action}",
+            headers={"X-Secret-Key": self.secret_key},
+            json=kwargs,
         )
+        if res.status_code != 200:
+            raise Exception(res.text)
         return res.json()
