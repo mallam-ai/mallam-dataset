@@ -12,7 +12,8 @@ from mallam_datasets.state import State
 @click.option("--repo_id", "repo_id", required=True, type=str)
 @click.option("--team_id", "team_id", required=True, type=str)
 @click.option("--user_id", "user_id", required=True, type=str)
-def main(repo_id: str, team_id: str, user_id: str):
+@click.option("--limit", "limit", required=False, type=int, default=10)
+def main(repo_id: str, team_id: str, user_id: str, limit: int):
     backend = BackendService()
 
     dataset = load_dataset(repo_id, split="train")
@@ -38,6 +39,9 @@ def main(repo_id: str, team_id: str, user_id: str):
             )
 
             s.data[repo_id] = i + 1
+
+            if i - start >= limit:
+                break
 
 
 if __name__ == "__main__":
